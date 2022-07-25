@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Assignment4.Console/1.0.0": {
+        "dependencies": {
+          "Assignment4.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Assignment4.Console.dll": {}
+        }
+      },
+      "Assignment4.Domain/1.0.0": {
+        "runtime": {
+          "Assignment4.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Assignment4.Console/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Assignment4.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,12 @@
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\bin\Debug\net6.0\Assignment4.Domain.deps.json
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\bin\Debug\net6.0\Assignment4.Domain.dll
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\bin\Debug\net6.0\Assignment4.Domain.pdb
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\obj\Debug\net6.0\Assignment4.Domain.csproj.AssemblyReference.cache
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\obj\Debug\net6.0\Assignment4.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\obj\Debug\net6.0\Assignment4.Domain.AssemblyInfoInputs.cache
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\obj\Debug\net6.0\Assignment4.Domain.AssemblyInfo.cs
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\obj\Debug\net6.0\Assignment4.Domain.csproj.CoreCompileInputs.cache
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\obj\Debug\net6.0\Assignment4.Domain.dll
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\obj\Debug\net6.0\refint\Assignment4.Domain.dll
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\obj\Debug\net6.0\Assignment4.Domain.pdb
+D:\Stuff\Work-stuff\Lecture4\Assignment4\Assignment4.Domain\obj\Debug\net6.0\ref\Assignment4.Domain.dll
