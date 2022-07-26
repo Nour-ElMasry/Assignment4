@@ -17,7 +17,7 @@ namespace Assignment4.Domain
         {
             if(BirthDate == null)
                 return $"\n       Username: {Name}\n      BirthDate: Not Provided";
-            return $"       Username: {Name}\n      BirthDate: {DateOnly.FromDateTime((DateTime)BirthDate):dd/MM/yyyy}";
+            return $"\n       Username: {Name}\n      BirthDate: {DateOnly.FromDateTime((DateTime)BirthDate):dd/MM/yyyy}";
         }
     }
     public class ChatBot
@@ -26,8 +26,6 @@ namespace Assignment4.Domain
         public string Description { get; set; }
 
         public User User { get; set; }
-
-        string _syntaxError = "Please follow given syntax";
 
         public ChatBot(string name, string description)
         {
@@ -47,7 +45,7 @@ namespace Assignment4.Domain
 
         public void Msg(string msg) 
         {
-            Console.WriteLine($"{ Name }: { msg }");
+            Console.WriteLine($"\n{ Name }: { msg }");
         }
 
         public string chat() {
@@ -55,77 +53,62 @@ namespace Assignment4.Domain
             return Console.ReadKey().KeyChar.ToString();
         }
 
-        public int EnterUsername() 
+        public void EnterUsername() 
         {
-            if (User.Name != "user") {
-                Msg("Name already introduced!");
-                return -1;
-            }
+            if (User.Name != "user") 
+                throw new AlreadyExistsException("Name already introduced!");
 
             Msg("Enter your full name:");
             var username = Console.ReadLine();
 
             if (string.IsNullOrEmpty(username)) 
-            {
-                Msg("String is Empty!!");
-                return -1;
-            }
+               throw new ArgumentNullException("Empty input!");
+            
 
             var fullName = username.Split(" ");
-            if (fullName.Length > 2) {
-                Msg(_syntaxError);
-                return -1;
-            }
+
+            if (fullName.Length > 2) 
+                throw new SyntaxException("Please follow given syntax! write only your first name and last name");
 
             var charCheck = new Regex(@"^[A-Za-z]+$");
 
             for (int i = 0; i < fullName.Length; i++)
             {
                 if (!charCheck.IsMatch(fullName[i]))
-                {
-                    Msg(_syntaxError);
-                    return -1;
-                }
+                    throw new SyntaxException("Please follow given syntax! Only Characters are allowed!");
             }
 
             User.Name = username;
             Msg($"Greetings {fullName[0]}! Happy to meet you!");
-            return 0;
         }
 
-        private bool IsDateTime(string d)
+        private void CheckDateTime(string d)
         {
             DateTime tempDate;
-            if (DateTime.TryParse(d, out tempDate))
-            {
-                User.BirthDate = tempDate;
-                return true;
-            }
-            return false;
+
+            if (!DateTime.TryParse(d, out tempDate))
+                throw new SyntaxException("Please follow given syntax! yyyy-MM-dd");
+            
+            User.BirthDate = tempDate; 
         }
 
-        public int EnterBirthDate() {
-            if (User.BirthDate == null)
-            {
-                Msg("Birth date already introduced!");
-                return -1;
-            }
+        public void EnterBirthDate() {
+            if (User.BirthDate != null)
+                throw new AlreadyExistsException("Birth date already introduced!");
 
             Msg("Enter your birth date: (Syntax: yyyy/mm/dd)");
             var bd = Console.ReadLine();
 
             if (bd == null)
-                return -1;
+                throw new ArgumentNullException("Empty input!");
+
+            CheckDateTime(bd);
+            var userBd = User.BirthDate;
+
+            if (DateTime.Now.Year - userBd.Value.Year < 0)
+                throw new BirthDateException("Birth date invalid!");
             
-            if (IsDateTime(bd)) 
-            {
-                var userBd = User.BirthDate;
-                if (DateTime.Now.Year - userBd.Value.Year < 0)
-                    return -1;
-                                
-                Console.WriteLine($"You are {DateTime.Now.Year - userBd.Value.Year} years old!");
-            }
-            return 0;
+            Console.WriteLine($"You are {DateTime.Now.Year - userBd.Value.Year} years old!");
         }
 
         public void GetDate() 
