@@ -1,18 +1,31 @@
 ﻿using Assignment4.Domain;
 using System.Diagnostics;
 
+
 var jerry = new ChatBot("Jerry", "I was created by Nour Eldin");
 var flag = true;
 
-jerry.instructions();
-Console.WriteLine("\n///////////////////////////////////////////\n");
-jerry.Intro();
-
 Debug.Assert(flag == true);
+
+#if DEBUG
+    Console.WriteLine("\nThis is the Debug version of the ChatBot!\n");
+#else
+    Console.WriteLine("\nThis is the Release version of the ChatBot!\n");
+#endif
+
+jerry.instructions();
+
+Console.WriteLine("\n///////////////////////////////////////////\n");
+
+jerry.Intro();
 
 while (flag)
 {
     var input = jerry.chat();
+
+    #if DEBUG
+        Console.WriteLine($"\n\n----> Inputed value: {input}");
+    #endif
 
     Debug.WriteLine($"Testing the following input for exceptions: {input}");
     try

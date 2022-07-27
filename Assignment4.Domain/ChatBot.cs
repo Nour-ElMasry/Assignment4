@@ -1,5 +1,4 @@
-﻿
-
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace Assignment4.Domain
@@ -38,6 +37,15 @@ namespace Assignment4.Domain
             Console.WriteLine("List of commands: ");
             Console.WriteLine(" 1 - Enter your name\n 2 - Enter date of birth\n 3 - Get current date\n 4 - Get current time\n 5 - User info\n 6 - exit");
         }
+
+#if DEBUG
+
+        public static void DebugInputValues(string input) {
+            Console.WriteLine($"\n----> Inputed value: {input}");
+        }
+
+#endif
+
         public void Intro() 
         {
             Console.WriteLine($"Hello! My name is {Name}.\n{Description}");
@@ -63,7 +71,12 @@ namespace Assignment4.Domain
 
             if (string.IsNullOrEmpty(username)) 
                throw new ArgumentNullException("Empty input!");
-            
+
+#if DEBUG
+
+            DebugInputValues(username);
+
+#endif
 
             var fullName = username.Split(" ");
 
@@ -84,11 +97,10 @@ namespace Assignment4.Domain
 
         private void CheckDateTime(string d)
         {
-            DateTime tempDate;
 
-            if (!DateTime.TryParse(d, out tempDate))
+            if (!DateTime.TryParse(d, out DateTime tempDate))
                 throw new SyntaxException("Please follow given syntax! yyyy-MM-dd");
-            
+
             User.BirthDate = tempDate; 
         }
 
@@ -101,6 +113,12 @@ namespace Assignment4.Domain
 
             if (bd == null)
                 throw new ArgumentNullException("Empty input!");
+
+#if DEBUG
+
+            DebugInputValues(bd);
+
+#endif
 
             CheckDateTime(bd);
             var userBd = User.BirthDate;
